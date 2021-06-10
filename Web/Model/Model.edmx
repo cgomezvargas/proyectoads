@@ -1,0 +1,360 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ProyectoDB.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ESTADO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CODIGO" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="REQUISICION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MONTO" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ID_USUARIO_COMPRADOR" Type="int" Nullable="false" />
+          <Property Name="ID_USUARIO_APROBADOR" Type="int" Nullable="false" />
+          <Property Name="ID_USUARIO_FINANCIERO" Type="int" />
+          <Property Name="FECHA_CREACION" Type="datetime" Nullable="false" />
+          <Property Name="FECHA_APROBADOR" Type="datetime" />
+          <Property Name="FECHA_FINANCIERO" Type="datetime" />
+          <Property Name="ID_ESTADO" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ROL">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CODIGO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MONTO_MINIMO_APROBACION" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="MONTO_MAXIMO_APROBACION" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="CORREO" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="ID_ROL" Type="int" Nullable="false" />
+          <Property Name="USUARIO" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="CONTRASENNA" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="ID_JEFE_APROBADOR" Type="int" />
+        </EntityType>
+        <Association Name="FK_REQUISICION_ESTADO">
+          <End Role="ESTADO" Type="Self.ESTADO" Multiplicity="1" />
+          <End Role="REQUISICION" Type="Self.REQUISICION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="REQUISICION">
+              <PropertyRef Name="ID_ESTADO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REQUISICION_USUARIO_APROBADOR">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="REQUISICION" Type="Self.REQUISICION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="REQUISICION">
+              <PropertyRef Name="ID_USUARIO_APROBADOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REQUISICION_USUARIO_COMPRADOR">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="REQUISICION" Type="Self.REQUISICION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="REQUISICION">
+              <PropertyRef Name="ID_USUARIO_COMPRADOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REQUISICION_USUARIO_FINANCIERO">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
+          <End Role="REQUISICION" Type="Self.REQUISICION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="REQUISICION">
+              <PropertyRef Name="ID_USUARIO_FINANCIERO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIO_ROL">
+          <End Role="ROL" Type="Self.ROL" Multiplicity="1" />
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROL">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="USUARIO">
+              <PropertyRef Name="ID_ROL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProyectoDBStoreContainer">
+          <EntitySet Name="ESTADO" EntityType="Self.ESTADO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="REQUISICION" EntityType="Self.REQUISICION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ROL" EntityType="Self.ROL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_REQUISICION_ESTADO" Association="Self.FK_REQUISICION_ESTADO">
+            <End Role="ESTADO" EntitySet="ESTADO" />
+            <End Role="REQUISICION" EntitySet="REQUISICION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REQUISICION_USUARIO_APROBADOR" Association="Self.FK_REQUISICION_USUARIO_APROBADOR">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="REQUISICION" EntitySet="REQUISICION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REQUISICION_USUARIO_COMPRADOR" Association="Self.FK_REQUISICION_USUARIO_COMPRADOR">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="REQUISICION" EntitySet="REQUISICION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REQUISICION_USUARIO_FINANCIERO" Association="Self.FK_REQUISICION_USUARIO_FINANCIERO">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="REQUISICION" EntitySet="REQUISICION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIO_ROL" Association="Self.FK_USUARIO_ROL">
+            <End Role="ROL" EntitySet="ROL" />
+            <End Role="USUARIO" EntitySet="USUARIO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProyectoDB" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ESTADO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CODIGO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="REQUISICIONs" Relationship="Self.FK_REQUISICION_ESTADO" FromRole="ESTADO" ToRole="REQUISICION" />
+        </EntityType>
+        <EntityType Name="REQUISICION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MONTO" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ID_USUARIO_COMPRADOR" Type="Int32" Nullable="false" />
+          <Property Name="ID_USUARIO_APROBADOR" Type="Int32" Nullable="false" />
+          <Property Name="ID_USUARIO_FINANCIERO" Type="Int32" />
+          <Property Name="FECHA_CREACION" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FECHA_APROBADOR" Type="DateTime" Precision="3" />
+          <Property Name="FECHA_FINANCIERO" Type="DateTime" Precision="3" />
+          <Property Name="ID_ESTADO" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ESTADO" Relationship="Self.FK_REQUISICION_ESTADO" FromRole="REQUISICION" ToRole="ESTADO" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.FK_REQUISICION_USUARIO_APROBADOR" FromRole="REQUISICION" ToRole="USUARIO" />
+          <NavigationProperty Name="USUARIO1" Relationship="Self.FK_REQUISICION_USUARIO_COMPRADOR" FromRole="REQUISICION" ToRole="USUARIO" />
+          <NavigationProperty Name="USUARIO2" Relationship="Self.FK_REQUISICION_USUARIO_FINANCIERO" FromRole="REQUISICION" ToRole="USUARIO" />
+        </EntityType>
+        <EntityType Name="ROL">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CODIGO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MONTO_MINIMO_APROBACION" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="MONTO_MAXIMO_APROBACION" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="USUARIOs" Relationship="Self.FK_USUARIO_ROL" FromRole="ROL" ToRole="USUARIO" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CORREO" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_ROL" Type="Int32" Nullable="false" />
+          <Property Name="USUARIO1" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CONTRASENNA" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_JEFE_APROBADOR" Type="Int32" />
+          <NavigationProperty Name="REQUISICIONs" Relationship="Self.FK_REQUISICION_USUARIO_APROBADOR" FromRole="USUARIO" ToRole="REQUISICION" />
+          <NavigationProperty Name="REQUISICIONs1" Relationship="Self.FK_REQUISICION_USUARIO_COMPRADOR" FromRole="USUARIO" ToRole="REQUISICION" />
+          <NavigationProperty Name="REQUISICIONs2" Relationship="Self.FK_REQUISICION_USUARIO_FINANCIERO" FromRole="USUARIO" ToRole="REQUISICION" />
+          <NavigationProperty Name="ROL" Relationship="Self.FK_USUARIO_ROL" FromRole="USUARIO" ToRole="ROL" />
+        </EntityType>
+        <Association Name="FK_REQUISICION_ESTADO">
+          <End Role="ESTADO" Type="Self.ESTADO" Multiplicity="1" />
+          <End Role="REQUISICION" Type="Self.REQUISICION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="REQUISICION">
+              <PropertyRef Name="ID_ESTADO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REQUISICION_USUARIO_APROBADOR">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="REQUISICION" Type="Self.REQUISICION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="REQUISICION">
+              <PropertyRef Name="ID_USUARIO_APROBADOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REQUISICION_USUARIO_COMPRADOR">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="REQUISICION" Type="Self.REQUISICION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="REQUISICION">
+              <PropertyRef Name="ID_USUARIO_COMPRADOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_REQUISICION_USUARIO_FINANCIERO">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
+          <End Role="REQUISICION" Type="Self.REQUISICION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="REQUISICION">
+              <PropertyRef Name="ID_USUARIO_FINANCIERO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIO_ROL">
+          <End Role="ROL" Type="Self.ROL" Multiplicity="1" />
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROL">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="USUARIO">
+              <PropertyRef Name="ID_ROL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProyectoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ESTADOes" EntityType="Self.ESTADO" />
+          <EntitySet Name="REQUISICIONs" EntityType="Self.REQUISICION" />
+          <EntitySet Name="ROLs" EntityType="Self.ROL" />
+          <EntitySet Name="USUARIOs" EntityType="Self.USUARIO" />
+          <AssociationSet Name="FK_REQUISICION_ESTADO" Association="Self.FK_REQUISICION_ESTADO">
+            <End Role="ESTADO" EntitySet="ESTADOes" />
+            <End Role="REQUISICION" EntitySet="REQUISICIONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REQUISICION_USUARIO_APROBADOR" Association="Self.FK_REQUISICION_USUARIO_APROBADOR">
+            <End Role="USUARIO" EntitySet="USUARIOs" />
+            <End Role="REQUISICION" EntitySet="REQUISICIONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REQUISICION_USUARIO_COMPRADOR" Association="Self.FK_REQUISICION_USUARIO_COMPRADOR">
+            <End Role="USUARIO" EntitySet="USUARIOs" />
+            <End Role="REQUISICION" EntitySet="REQUISICIONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_REQUISICION_USUARIO_FINANCIERO" Association="Self.FK_REQUISICION_USUARIO_FINANCIERO">
+            <End Role="USUARIO" EntitySet="USUARIOs" />
+            <End Role="REQUISICION" EntitySet="REQUISICIONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIO_ROL" Association="Self.FK_USUARIO_ROL">
+            <End Role="ROL" EntitySet="ROLs" />
+            <End Role="USUARIO" EntitySet="USUARIOs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProyectoDBStoreContainer" CdmEntityContainer="ProyectoEntities">
+          <EntitySetMapping Name="ESTADOes">
+            <EntityTypeMapping TypeName="ProyectoDB.ESTADO">
+              <MappingFragment StoreEntitySet="ESTADO">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REQUISICIONs">
+            <EntityTypeMapping TypeName="ProyectoDB.REQUISICION">
+              <MappingFragment StoreEntitySet="REQUISICION">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MONTO" ColumnName="MONTO" />
+                <ScalarProperty Name="ID_USUARIO_COMPRADOR" ColumnName="ID_USUARIO_COMPRADOR" />
+                <ScalarProperty Name="ID_USUARIO_APROBADOR" ColumnName="ID_USUARIO_APROBADOR" />
+                <ScalarProperty Name="ID_USUARIO_FINANCIERO" ColumnName="ID_USUARIO_FINANCIERO" />
+                <ScalarProperty Name="FECHA_CREACION" ColumnName="FECHA_CREACION" />
+                <ScalarProperty Name="FECHA_APROBADOR" ColumnName="FECHA_APROBADOR" />
+                <ScalarProperty Name="FECHA_FINANCIERO" ColumnName="FECHA_FINANCIERO" />
+                <ScalarProperty Name="ID_ESTADO" ColumnName="ID_ESTADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROLs">
+            <EntityTypeMapping TypeName="ProyectoDB.ROL">
+              <MappingFragment StoreEntitySet="ROL">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="MONTO_MINIMO_APROBACION" ColumnName="MONTO_MINIMO_APROBACION" />
+                <ScalarProperty Name="MONTO_MAXIMO_APROBACION" ColumnName="MONTO_MAXIMO_APROBACION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIOs">
+            <EntityTypeMapping TypeName="ProyectoDB.USUARIO">
+              <MappingFragment StoreEntitySet="USUARIO">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="CORREO" ColumnName="CORREO" />
+                <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
+                <ScalarProperty Name="USUARIO1" ColumnName="USUARIO" />
+                <ScalarProperty Name="CONTRASENNA" ColumnName="CONTRASENNA" />
+                <ScalarProperty Name="ID_JEFE_APROBADOR" ColumnName="ID_JEFE_APROBADOR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
