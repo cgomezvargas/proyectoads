@@ -44,12 +44,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Entity.Design" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.Extensions" />
@@ -128,15 +133,25 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <EntityDeploy Include="Model\Model.edmx">
+    <EntityDeploy Include="Model\RequisicionModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model.Designer.vb</LastGenOutput>
+      <LastGenOutput>RequisicionModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Model\Model.edmx.diagram">
-      <DependentUpon>Model.edmx</DependentUpon>
-    </None>
+    <Content Include="Model\RequisicionModel.edmx.diagram">
+      <DependentUpon>RequisicionModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Login\Login.aspx" />
+    <Content Include="Model\RequisicionModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RequisicionModel.edmx</DependentUpon>
+      <LastGenOutput>RequisicionModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\RequisicionModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RequisicionModel.edmx</DependentUpon>
+      <LastGenOutput>RequisicionModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -205,6 +220,36 @@
     <Compile Include="Login\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Model\ESTADO.cs">
+      <DependentUpon>RequisicionModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\REQUISICION.cs">
+      <DependentUpon>RequisicionModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\RequisicionModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RequisicionModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\RequisicionModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RequisicionModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\RequisicionModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RequisicionModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ROL.cs">
+      <DependentUpon>RequisicionModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\sysdiagrams.cs">
+      <DependentUpon>RequisicionModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\USUARIO.cs">
+      <DependentUpon>RequisicionModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -241,6 +286,9 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
