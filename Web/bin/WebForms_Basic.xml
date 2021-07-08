@@ -37,6 +37,15 @@ Web
  Returns the Asp log object.
  </summary>
 </member>
+<member name="F:Web.login._login">
+<summary>
+Control login.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:Web.SiteMaster._MainContent">
 <summary>
 MainContent control.
