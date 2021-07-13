@@ -74,6 +74,7 @@
 					color: #fff;
 					font-size: 18px;
 					border-radius: 20px;
+					margin:20px 0;
 				}
 
 					.login-box input[type="submit"]:hover {
@@ -94,9 +95,9 @@
 					color: #fff;
 				}
 
-		.select {
+		#ddlRoles {
 			margin: 15px 40px;
-			width: 180px;
+			width: 185px;
 			height: 25px;
 			background: #b80f22;
 			color: white;
@@ -116,11 +117,12 @@
 			<h1>Inicie session</h1>
 			<form>
 				
-				<asp:DropDownList ID="ddlRoles" runat="server"></asp:DropDownList>
 				<label for="username">Usuario</label>
 				<asp:TextBox ID="txtUsuario" runat="server"></asp:TextBox>
 				<label for="password">Contraseña</label>
 				<asp:TextBox ID="txtContrasenna" runat="server" TextMode="Password"></asp:TextBox>
+
+				<asp:DropDownList ID="ddlRoles" runat="server"></asp:DropDownList>
 
 				<asp:Button ID="btnIngresar" runat="server" Text="Ingresar" OnClick="btnIngresar_Click" />
 				<%--TODO: AGREGAR PANTALLA DE REGISTRARSE
