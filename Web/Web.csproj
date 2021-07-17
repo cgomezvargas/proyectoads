@@ -153,6 +153,7 @@
       <DependentUpon>RequisicionModel.edmx</DependentUpon>
       <LastGenOutput>RequisicionModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Requisicion\ListaRequisiciones.aspx" />
     <Content Include="Requisicion\Requisicion.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -261,6 +262,13 @@
       <DependentUpon>RequisicionModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Requisicion\ListaRequisiciones.aspx.cs">
+      <DependentUpon>ListaRequisiciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Requisicion\ListaRequisiciones.aspx.designer.cs">
+      <DependentUpon>ListaRequisiciones.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Requisicion\Requisicion.aspx.cs">
       <DependentUpon>Requisicion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
