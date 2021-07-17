@@ -20,8 +20,18 @@ namespace Web.Usuarios
 
 				List<USUARIO> usuariosList = db.USUARIO.Where(q => q.ID_JEFE_APROBADOR == idUsuario).ToList();
 
+				GridView1.DataSource = usuariosList;
+				GridView1.DataBind();
+
 				int i = 0;
+	
+
 			}
 		}
-	}
+
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+		}
+    }
 }
