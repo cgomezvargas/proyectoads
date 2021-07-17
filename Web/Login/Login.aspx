@@ -116,17 +116,13 @@
 			<img src="../Content/Images/uaca.png" class="avatar" alt="Avatar Image">
 			<h1>Inicie session</h1>
 			<form>
-				
 				<label for="username">Usuario</label>
 				<asp:TextBox ID="txtUsuario" runat="server"></asp:TextBox>
 				<label for="password">Contraseña</label>
 				<asp:TextBox ID="txtContrasenna" runat="server" TextMode="Password"></asp:TextBox>
 
-				<asp:DropDownList ID="ddlRoles" runat="server"></asp:DropDownList>
-
 				<asp:Button ID="btnIngresar" runat="server" Text="Ingresar" OnClick="btnIngresar_Click" />
-				<%--TODO: AGREGAR PANTALLA DE REGISTRARSE
-					<a href="./RegistroCliente.html" class="registrar">Registrarse</a>--%>
+
 			</form>
 		</div>
 	</form>
