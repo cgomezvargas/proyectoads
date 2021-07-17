@@ -15,7 +15,7 @@ namespace Web.Login
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			if (!Page.IsPostBack)
-				if (Session["idUsuario"] != null)
+				if (Request.Cookies["idUsuario"] != null && Request.Cookies["idUsuario"].Value != null)
 					Response.Redirect("../MenuPrincipal/MenuPrincipal.aspx");
 		}
 
@@ -29,7 +29,7 @@ namespace Web.Login
 
 			if (usuarioDB != null)
 			{
-				Session["idUsuario"] = usuarioDB.ID;
+				Response.Cookies["idUsuario"].Value = usuarioDB.ID.ToString();
 
 				Response.Redirect("../MenuPrincipal/MenuPrincipal.aspx");
 			}

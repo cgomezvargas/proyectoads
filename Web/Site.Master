@@ -6,7 +6,7 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - My ASP.NET Application</title>
+    <title><%: Page.Title %> - UACA</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -46,7 +46,7 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a runat="server" visible="false" id="aUsuarios" href="~/Usuarios/ListaUsuarios.aspx">Usuarios</a></li>
-                        <li><a runat="server" visible="false" id="aRequisiciones" href="~/About">Requisiciones</a></li>
+                        <li><a runat="server" visible="false" id="aRequisiciones" href="~/Requisicion/ListaRequisiciones.aspx">Requisiciones</a></li>
                         <li>
 							<asp:LinkButton ID="lbCerrarSesion" OnClick="lbCerrarSesion_Click" runat="server">Cerrar Sesión</asp:LinkButton>
                         </li>

@@ -16,7 +16,7 @@ namespace Web
 		{
 			if (!Page.IsPostBack)
 			{
-				int idUsuario = int.Parse(Session["IdUsuario"].ToString());
+				int idUsuario = int.Parse(Request.Cookies["idUsuario"].Value);
 
 				USUARIO userSession = db.USUARIO.Where(q => q.ID == idUsuario).FirstOrDefault();
 
@@ -27,9 +27,11 @@ namespace Web
 						break;
 					case "JEFE_APROBADOR":
 						aUsuarios.Visible = true;
-
+						aRequisiciones.Visible = true;
 						break;
 					default:
+						aRequisiciones.Visible = true;
+
 						break;
 
 				}
@@ -38,8 +40,12 @@ namespace Web
 
 		protected void lbCerrarSesion_Click(object sender, EventArgs e)
 		{
-			Session.Clear();
+			Response.Cookies.Remove("idUsuario");
+			var aCookie = new HttpCookie("idUsuario") { Expires = DateTime.Now.AddDays(-1) };
+			Response.Cookies.Add(aCookie);
+
 			Response.Redirect("../Login/Login.aspx");
+			
 		}
 	}
 }
