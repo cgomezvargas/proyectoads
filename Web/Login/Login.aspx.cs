@@ -8,7 +8,7 @@ using Web.Model;
 
 namespace Web.Login
 {
-	public partial class Login : System.Web.UI.Page
+	public partial class Login : Page
 	{
 		RequisionBD db = new RequisionBD();
 
