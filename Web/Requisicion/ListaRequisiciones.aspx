@@ -3,11 +3,11 @@
 
 	<br />
 
-	<asp:Button ID="btnCrearRequision" runat="server" Text="Crear requisición" />
+	<asp:Button ID="btnCrearRequision" runat="server" Text="Crear requisición" OnClick="btnCrearRequision_Click" />
 
 	<br /><br />
 
-	<asp:GridView ID="gvRequsiciones" runat="server" AutoGenerateColumns="False">
+	<asp:GridView ID="gvRequisiciones" runat="server" AutoGenerateColumns="False">
 		<Columns>
 			<asp:BoundField DataField="ID" HeaderText="id" Visible="False" />
 			<asp:BoundField DataField="MONTO" HeaderText="Monto" />

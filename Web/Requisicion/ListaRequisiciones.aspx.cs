@@ -48,8 +48,8 @@ namespace Web.Requisicion
 					dataSource.Add(requisicionData);
 				}
 
-				gvRequsiciones.DataSource = dataSource;
-				gvRequsiciones.DataBind();
+				gvRequisiciones.DataSource = dataSource;
+				gvRequisiciones.DataBind();
 				
 			}
 		}
@@ -64,6 +64,11 @@ namespace Web.Requisicion
 			public DateTime? FECHA_APROBACION { get; set; }
 			public DateTime? FECHA_FINANCIERO { get; set; }
 			public string ESTADO { get; set; }
+		}
+
+		protected void btnCrearRequision_Click(object sender, EventArgs e)
+		{
+			Response.Redirect("CrearRequisicion.aspx");
 		}
 	}
 }

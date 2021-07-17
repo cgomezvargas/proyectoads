@@ -11,25 +11,34 @@ namespace Web.Requisicion
 {
 
 
-	public partial class ListaRequisiciones
+	public partial class CrearRequisicion
 	{
 
 		/// <summary>
-		/// btnCrearRequision control.
+		/// TextBox2 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button btnCrearRequision;
+		protected global::System.Web.UI.WebControls.TextBox TextBox2;
 
 		/// <summary>
-		/// gvRequisiciones control.
+		/// TextBox1 control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.GridView gvRequisiciones;
+		protected global::System.Web.UI.WebControls.TextBox TextBox1;
+
+		/// <summary>
+		/// btnCrear control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Button btnCrear;
 	}
 }
