@@ -7,20 +7,39 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-
 namespace Web
 {
+
+
 	public partial class SiteMaster
 	{
 
 		/// <summary>
-		/// HeadContent control.
+		/// aUsuarios control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.ContentPlaceHolder HeadContent;
+		protected global::System.Web.UI.HtmlControls.HtmlAnchor aUsuarios;
+
+		/// <summary>
+		/// aRequisiciones control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.HtmlControls.HtmlAnchor aRequisiciones;
+
+		/// <summary>
+		/// lbCerrarSesion control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.LinkButton lbCerrarSesion;
 
 		/// <summary>
 		/// MainContent control.

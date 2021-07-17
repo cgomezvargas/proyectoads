@@ -115,8 +115,6 @@
 			<img src="../Content/Images/uaca.png" class="avatar" alt="Avatar Image">
 			<h1>Inicie session</h1>
 			<form>
-				
-				<asp:DropDownList ID="ddlRoles" runat="server"></asp:DropDownList>
 				<label for="username">Usuario</label>
 				<asp:TextBox ID="txtUsuario" runat="server"></asp:TextBox>
 				<label for="password">Contraseña</label>
