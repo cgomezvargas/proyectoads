@@ -297,6 +297,7 @@
     <Compile Include="Usuarios\ListaUsuarios.aspx.designer.cs">
       <DependentUpon>ListaUsuarios.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Utilidades\Notificaciones.cs" />
     <Compile Include="Utilidades\Utilidades.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

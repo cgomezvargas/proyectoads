@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Web.Model;
+using Web.Utilidades;
 
 namespace Web.Requisicion
 {
@@ -34,7 +35,9 @@ namespace Web.Requisicion
 			db.REQUISICION.Add(nuevaRequision);
 			db.SaveChanges();
 
-			Response.Write("<script>alert('Requisición creada con éxito. No: '" + nuevaRequision.ID + ")</script>");
+			Notificaciones.EnviarNotificacion(nuevaRequision.ID);
+
+			Response.Write("<script>alert('Requisición creada con éxito. No: " + nuevaRequision.ID + "')</script>");
 			Response.Redirect("ListaRequisiciones.aspx");
 		}
 	}
