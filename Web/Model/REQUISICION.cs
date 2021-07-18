@@ -16,9 +16,14 @@ namespace Web.Model
     {
         public int ID { get; set; }
         public decimal MONTO { get; set; }
+        public string DESCRIPCION { get; set; }
+        public int ID_USUARIO_COMPRADOR { get; set; }
+        public int ID_USUARIO_APROBADOR { get; set; }
+        public Nullable<int> ID_USUARIO_FINANCIERO { get; set; }
         public System.DateTime FECHA_CREACION { get; set; }
         public Nullable<System.DateTime> FECHA_APROBADOR { get; set; }
         public Nullable<System.DateTime> FECHA_FINANCIERO { get; set; }
+        public int ID_ESTADO { get; set; }
     
         public virtual ESTADO ESTADO { get; set; }
         public virtual USUARIO USUARIO { get; set; }

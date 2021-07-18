@@ -25,7 +25,7 @@ namespace Web.Login
 			string usuario = txtUsuario.Text;
 			string contrasenna = Utilidades.Utilidades.CreateMD5(txtContrasenna.Text);
 
-			USUARIO usuarioDB = db.USUARIO.Where(q => q.USUARIO1.Equals(usuario) && q.CONTRASENNA.Equals(contrasenna)).FirstOrDefault();
+			USUARIO usuarioDB = db.USUARIO.Where(q => q.NOMBRE_USUARIO.Equals(usuario) && q.CONTRASENNA.Equals(contrasenna)).FirstOrDefault();
 
 			if (usuarioDB != null)
 			{

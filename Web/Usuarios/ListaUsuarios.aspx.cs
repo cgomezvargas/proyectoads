@@ -18,9 +18,6 @@ namespace Web.Usuarios
 			{
 				int idUsuario = int.Parse(Request.Cookies["idUsuario"].Value);
 
-				List<USUARIO> usuariosList = db.USUARIO.Where(q => q.ID_JEFE_APROBADOR == idUsuario).ToList();
-
-				int i = 0;
 			}
 		}
 	}

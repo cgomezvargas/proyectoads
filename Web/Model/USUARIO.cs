@@ -20,12 +20,14 @@ namespace Web.Model
             this.REQUISICION = new HashSet<REQUISICION>();
             this.REQUISICION1 = new HashSet<REQUISICION>();
             this.REQUISICION2 = new HashSet<REQUISICION>();
+            this.USUARIO1 = new HashSet<USUARIO>();
         }
     
         public int ID { get; set; }
         public string NOMBRE { get; set; }
         public string CORREO { get; set; }
-        public string USUARIO1 { get; set; }
+        public int ID_ROL { get; set; }
+        public string NOMBRE_USUARIO { get; set; }
         public string CONTRASENNA { get; set; }
         public Nullable<int> ID_JEFE_APROBADOR { get; set; }
     
@@ -36,5 +38,8 @@ namespace Web.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<REQUISICION> REQUISICION2 { get; set; }
         public virtual ROL ROL { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<USUARIO> USUARIO1 { get; set; }
+        public virtual USUARIO USUARIO2 { get; set; }
     }
 }

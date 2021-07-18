@@ -1,11 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CrearRequisicion.aspx.cs" Inherits="Web.Requisicion.CrearRequisicion" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-		<h1>Crear requisición</h1>
+	<h1>Crear requisición</h1>
 	<table style="width: 40%; height: 100px;">
 		<tr>
 			<td>Monto</td>
 			<td>
-				<asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+				<asp:TextBox ID="txtMonto" runat="server"></asp:TextBox>
 			</td>
 		</tr>
 		<tr>
@@ -15,7 +16,7 @@
 			</td>
 			<td>
 				<br />
-				<asp:TextBox ID="TextBox1" TextMode="MultiLine" runat="server" Width="275px"></asp:TextBox>
+				<asp:TextBox ID="txtDescripcion" TextMode="MultiLine" runat="server" Width="275px" onkeypress="return isFloatNumber(this,event);"></asp:TextBox>
 			</td>
 		</tr>
 		<tr>
@@ -25,5 +26,4 @@
 			</td>
 		</tr>
 	</table>
-
 </asp:Content>

@@ -5,16 +5,17 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="d55977af16ff4bd9a08dc2a3ccaacc7e" Name="Diagram1">
-        <EntityTypeShape EntityType="RequisionModel.ESTADO" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="RequisionModel.REQUISICION" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="RequisionModel.ROL" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="RequisionModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RequisionModel.USUARIO" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <AssociationConnector Association="RequisionModel.FK_REQUISICION_ESTADO" ManuallyRouted="false" />
-        <AssociationConnector Association="RequisionModel.FK_REQUISICION_USUARIO_APROBADOR" ManuallyRouted="false" />
-        <AssociationConnector Association="RequisionModel.FK_REQUISICION_USUARIO_COMPRADOR" ManuallyRouted="false" />
-        <AssociationConnector Association="RequisionModel.FK_REQUISICION_USUARIO_FINANCIERO" ManuallyRouted="false" />
-        <AssociationConnector Association="RequisionModel.FK_USUARIO_ROL" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="RequisionModel.ESTADO" Width="1.5" PointX="3" PointY="6" />
+        <EntityTypeShape EntityType="RequisionModel.REQUISICION" Width="1.5" PointX="5.25" PointY="1" />
+        <EntityTypeShape EntityType="RequisionModel.ROL" Width="1.5" PointX="0.75" PointY="1.75" />
+        <EntityTypeShape EntityType="RequisionModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="5.75" />
+        <EntityTypeShape EntityType="RequisionModel.USUARIO" Width="1.5" PointX="3" PointY="1.125" />
+        <AssociationConnector Association="RequisionModel.FK_REQUISICION_ESTADO" />
+        <AssociationConnector Association="RequisionModel.FK_REQUISICION_USUARIO_APROBADOR" />
+        <AssociationConnector Association="RequisionModel.FK_REQUISICION_USUARIO_COMPRADOR" />
+        <AssociationConnector Association="RequisionModel.FK_REQUISICION_USUARIO_FINANCIERO" />
+        <AssociationConnector Association="RequisionModel.FK_USUARIO_ROL" />
+        <AssociationConnector Association="RequisionModel.FK_USUARIO_USUARIO_JEFE" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

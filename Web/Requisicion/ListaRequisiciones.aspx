@@ -11,6 +11,7 @@
 		<Columns>
 			<asp:BoundField DataField="ID" HeaderText="id" Visible="False" />
 			<asp:BoundField DataField="MONTO" HeaderText="Monto" />
+			<asp:BoundField DataField="DESCRIPCION" HeaderText="Descripción" />
 			<asp:BoundField DataField="COMPRADOR" HeaderText="Comprador" />
 			<asp:BoundField DataField="APROBADOR" HeaderText="Aprobador" />
 			<asp:BoundField DataField="FINANCIERO" HeaderText="Financiero" />

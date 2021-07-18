@@ -29,3 +29,12 @@ textarea {
         padding: 0;
     }
 }
+
+table.GridView th {
+    border-bottom: 1px solid #ED7A0A;
+    text-decoration: none;
+}
+
+table.GridView tr:hover {
+    background-color: #fabf85;
+}

@@ -7,13 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-
 namespace Web.Model
 {
-
-	public partial class RequisionBD : DbContext
+    using System;
+    using System.Data.Entity;
+    using System.Data.Entity.Infrastructure;
+    
+    public partial class RequisionBD : DbContext
     {
         public RequisionBD()
             : base("name=RequisionBD")

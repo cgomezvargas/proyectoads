@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Web.Model;
@@ -37,32 +36,33 @@ namespace Web.Requisicion
 					RequisicionDataSource requisicionData = new RequisicionDataSource();
 					requisicionData.ID = req.ID;
 					requisicionData.MONTO = req.MONTO;
+					requisicionData.DESCRIPCION = req.DESCRIPCION;
 					requisicionData.FECHA_APROBACION = req.FECHA_APROBADOR;
 					requisicionData.FECHA_CREACION = req.FECHA_CREACION;
-					requisicionData.FECHA_FINANCIERO = req.FECHA_FINANCIERO;
+					requisicionData.FECHA_FINANCIERO = req.FECHA_FINANCIERO != null ? req.FECHA_FINANCIERO.Value.ToString("dd/MM/yyyy") : "Pendiente Aprobación";
 					requisicionData.ESTADO = req.ESTADO.NOMBRE;
 					requisicionData.APROBADOR = req.USUARIO.NOMBRE;
 					requisicionData.COMPRADOR = req.USUARIO1.NOMBRE;
 					requisicionData.COMPRADOR = req.USUARIO1.NOMBRE;
-					requisicionData.FINANCIERO = req.USUARIO2.NOMBRE;
+					requisicionData.FINANCIERO = req.USUARIO2 != null ? req.USUARIO2.NOMBRE : "Pendiente Aprobación";
 					dataSource.Add(requisicionData);
 				}
 
 				gvRequisiciones.DataSource = dataSource;
 				gvRequisiciones.DataBind();
-				
 			}
 		}
 
 		class RequisicionDataSource { 
 			public int ID { get; set; }
 			public decimal? MONTO { get; set; }
+			public string DESCRIPCION { get; set; }
 			public string COMPRADOR { get; set; }
 			public string APROBADOR { get; set; }
 			public string FINANCIERO { get; set; }
 			public DateTime? FECHA_CREACION { get; set; }
 			public DateTime? FECHA_APROBACION { get; set; }
-			public DateTime? FECHA_FINANCIERO { get; set; }
+			public string FECHA_FINANCIERO { get; set; }
 			public string ESTADO { get; set; }
 		}
 
