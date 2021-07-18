@@ -20,20 +20,17 @@
 
     <div class="table">
 
-    <asp:GridView ID="GridView1" runat="server" OnSelectedIndexChanged="GridView1_SelectedIndexChanged"></asp:GridView>
+    <asp:GridView ID="GridView1" runat="server" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+        <Columns>
+            <asp:HyperLinkField Text="Detalles" />
+        </Columns>
+    </asp:GridView>
 
         <br />
         <br />
         <br />
-        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
 
     </div>
 
 
-    <asp:Button CssClass="button" ID="Button1" runat="server" Text="Agregar" />
-
-    <asp:Button CssClass="button" ID="Button2" runat="server" Text="Actualizar" />
-
-    <asp:Button CssClass="button" ID="Button3" runat="server" Text="Eliminar" />
-
-</asp:Content>
+    </asp:Content>

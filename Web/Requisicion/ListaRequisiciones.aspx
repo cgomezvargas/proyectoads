@@ -7,7 +7,7 @@
 
 	<br /><br />
 
-	<asp:GridView ID="gvRequsiciones" runat="server" AutoGenerateColumns="False">
+	<asp:GridView ID="gvRequsiciones" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="gvRequsiciones_SelectedIndexChanged">
 		<Columns>
 			<asp:BoundField DataField="ID" HeaderText="id" Visible="False" />
 			<asp:BoundField DataField="MONTO" HeaderText="Monto" />

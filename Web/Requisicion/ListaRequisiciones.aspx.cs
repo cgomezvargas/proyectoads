@@ -65,5 +65,10 @@ namespace Web.Requisicion
 			public DateTime? FECHA_FINANCIERO { get; set; }
 			public string ESTADO { get; set; }
 		}
-	}
+
+        protected void gvRequsiciones_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
 }
