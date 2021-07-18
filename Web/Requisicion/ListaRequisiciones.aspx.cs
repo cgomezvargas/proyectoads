@@ -65,10 +65,15 @@ namespace Web.Requisicion
 			public string FECHA_FINANCIERO { get; set; }
 			public string ESTADO { get; set; }
 		}
-
 		protected void btnCrearRequision_Click(object sender, EventArgs e)
 		{
 			Response.Redirect("CrearRequisicion.aspx");
 		}
-	}
+
+        protected void gvRequsiciones_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
+
 }
