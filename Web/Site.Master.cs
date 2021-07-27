@@ -48,7 +48,6 @@ namespace Web
 			Response.Cookies.Add(aCookie);
 
 			Response.Redirect("../Login/Login.aspx");
-			
 		}
 	}
 }

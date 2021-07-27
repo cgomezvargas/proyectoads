@@ -16,7 +16,7 @@ namespace Web.Login
 		{
 			if (!Page.IsPostBack)
 				if (Request.Cookies["idUsuario"] != null && Request.Cookies["idUsuario"].Value != null)
-					Response.Redirect("../MenuPrincipal/MenuPrincipal.aspx");
+					Response.Redirect("../Requisicion/ListaRequisiciones.aspx");
 		}
 
 		protected void btnIngresar_Click(object sender, EventArgs e)
@@ -31,7 +31,7 @@ namespace Web.Login
 			{
 				Response.Cookies["idUsuario"].Value = usuarioDB.ID.ToString();
 
-				Response.Redirect("../MenuPrincipal/MenuPrincipal.aspx");
+				Response.Redirect("../Requisicion/ListaRequisiciones.aspx");
 			}
 			else { 
 				//TODO enviar alerta que diga usuario o contrasenna incorrecta

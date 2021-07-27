@@ -387,7 +387,6 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>RequisicionModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="MenuPrincipal\MenuPrincipal.aspx" />
     <Content Include="Model\RequisicionModel.edmx.diagram">
       <DependentUpon>RequisicionModel.edmx</DependentUpon>
     </Content>
@@ -475,13 +474,6 @@
     </Compile>
     <Compile Include="Login\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="MenuPrincipal\MenuPrincipal.aspx.cs">
-      <DependentUpon>MenuPrincipal.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MenuPrincipal\MenuPrincipal.aspx.designer.cs">
-      <DependentUpon>MenuPrincipal.aspx</DependentUpon>
     </Compile>
     <Compile Include="Model\ESTADO.cs">
       <DependentUpon>RequisicionModel.tt</DependentUpon>
