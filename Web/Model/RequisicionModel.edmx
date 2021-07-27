@@ -35,8 +35,7 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NOMBRE" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="CODIGO" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="MONTO_MINIMO_APROBACION" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="MONTO_MAXIMO_APROBACION" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="LIMITE_APROBACION" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -233,8 +232,7 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CODIGO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="MONTO_MINIMO_APROBACION" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="MONTO_MAXIMO_APROBACION" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="LIMITE_APROBACION" Type="Decimal" Precision="18" Scale="2" />
           <NavigationProperty Name="USUARIO" Relationship="RequisionModel.FK_USUARIO_ROL" FromRole="ROL" ToRole="USUARIO" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -371,8 +369,7 @@
           <EntitySetMapping Name="ROL">
             <EntityTypeMapping TypeName="RequisionModel.ROL">
               <MappingFragment StoreEntitySet="ROL">
-                <ScalarProperty Name="MONTO_MAXIMO_APROBACION" ColumnName="MONTO_MAXIMO_APROBACION" />
-                <ScalarProperty Name="MONTO_MINIMO_APROBACION" ColumnName="MONTO_MINIMO_APROBACION" />
+                <ScalarProperty Name="LIMITE_APROBACION" ColumnName="LIMITE_APROBACION" />
                 <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
                 <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
                 <ScalarProperty Name="ID" ColumnName="ID" />

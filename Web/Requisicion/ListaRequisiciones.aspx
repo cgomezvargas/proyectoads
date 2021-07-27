@@ -3,23 +3,28 @@
 
 	<br />
 
-	<asp:Button ID="btnCrearRequision" runat="server" Text="Crear requisición" OnClick="btnCrearRequision_Click" />
+	<asp:Button ID="btnCrearRequision" runat="server" Text="Crear requisición" Visible="false" OnClick="btnCrearRequision_Click" />
 
 	<br /><br />
 
-	<asp:GridView ID="gvRequisiciones" runat="server" AutoGenerateColumns="False">
+	<asp:GridView ID="gvRequisiciones" OnRowCommand="gvRequisiciones_RowCommand" runat="server" AutoGenerateColumns="False">
 		<Columns>
 			<asp:BoundField DataField="ID" HeaderText="id" Visible="False" />
 			<asp:BoundField DataField="MONTO" HeaderText="Monto" />
 			<asp:BoundField DataField="DESCRIPCION" HeaderText="Descripción" />
 			<asp:BoundField DataField="COMPRADOR" HeaderText="Comprador" />
-			<asp:BoundField DataField="APROBADOR" HeaderText="Aprobador" />
-			<asp:BoundField DataField="FINANCIERO" HeaderText="Financiero" />
-			<asp:BoundField DataField="FECHA_CREACION" HeaderText="Fecha Creación" />
-			<asp:BoundField DataField="FECHA_APROBACION" HeaderText="Fecha Aprobación" />
-			<asp:BoundField DataField="FECHA_FINANCIERO" HeaderText="Fecha Financiero" />
+			<asp:BoundField DataField="APROBADOR" HeaderText="Aprobador responsable" />
+			<asp:BoundField DataField="FINANCIERO" HeaderText="Financiero responsable" />
 			<asp:BoundField DataField="ESTADO" HeaderText="Estado" />
-			<asp:HyperLinkField Text="Detalles" />
+			<asp:TemplateField HeaderText="Opciones">
+				<ItemTemplate>
+					<asp:LinkButton ID="lblDetalle" runat="server" 
+						Text="Detalle"
+						CommandName="Details" 
+						CommandArgument='<%#Bind("ID")%>'>
+					</asp:LinkButton>
+				</ItemTemplate>
+			</asp:TemplateField>
 		</Columns>
 	</asp:GridView>  
 

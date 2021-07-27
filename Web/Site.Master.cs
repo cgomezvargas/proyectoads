@@ -19,7 +19,7 @@ namespace Web
 				int idUsuario = int.Parse(Request.Cookies["idUsuario"].Value);
 
 				USUARIO userSession = db.USUARIO.Where(q => q.ID == idUsuario).FirstOrDefault();
-
+			
 				switch (userSession.ROL.CODIGO)
 				{
 					case "COMPRADOR":
@@ -35,6 +35,9 @@ namespace Web
 						break;
 
 				}
+
+				lblHome.Text = String.Format("Usuario: {0}<br/>Rol: {1}", userSession.NOMBRE, userSession.ROL.NOMBRE);
+
 			}
 		}
 

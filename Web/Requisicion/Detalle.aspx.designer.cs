@@ -7,56 +7,74 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Web
+namespace Web.Requisicion
 {
 
 
-	public partial class SiteMaster
+	public partial class Detalle
 	{
 
 		/// <summary>
-		/// lblHome control.
+		/// lblComprador control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label lblHome;
+		protected global::System.Web.UI.WebControls.Label lblComprador;
 
 		/// <summary>
-		/// aUsuarios control.
+		/// lblEstado control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.HtmlControls.HtmlAnchor aUsuarios;
+		protected global::System.Web.UI.WebControls.Label lblEstado;
 
 		/// <summary>
-		/// aRequisiciones control.
+		/// lblId control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.HtmlControls.HtmlAnchor aRequisiciones;
+		protected global::System.Web.UI.WebControls.Label lblId;
 
 		/// <summary>
-		/// lbCerrarSesion control.
+		/// lblMonto control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.LinkButton lbCerrarSesion;
+		protected global::System.Web.UI.WebControls.Label lblMonto;
 
 		/// <summary>
-		/// MainContent control.
+		/// lblDescripcion control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+		protected global::System.Web.UI.WebControls.Label lblDescripcion;
+
+		/// <summary>
+		/// btnAprobar control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Button btnAprobar;
+
+		/// <summary>
+		/// btnRechazar control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Button btnRechazar;
 	}
 }

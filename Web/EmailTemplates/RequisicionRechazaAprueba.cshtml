@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <h3>Hola @Model.NombreComprador</h3>
+	<h4>El aprobador @Model.NombreAprobador ha @Model.EstadoRequisicion la requisición #@Model.IdRequisicion.</h4>
+	<h4>Monto: @Model.MontoRequisicion</h4>
+	<h4>Descripción: @Model.DescripcionRequisicion</h4>
+    <h4>Presione el siguiente botón para ver más detalles:</h4>
+
+    <a style="background: #12b40b;
+        color: white;
+        width: 200px;
+        height: 30px;
+        padding: 10px 10px 10px 10px; border: 1px solid black;" href="@Model.UrlDetalleRequisicion">Ver más detalles</a>
+  
+</body>
+</html>

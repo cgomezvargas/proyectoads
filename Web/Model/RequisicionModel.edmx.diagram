@@ -7,7 +7,7 @@
       <Diagram DiagramId="d55977af16ff4bd9a08dc2a3ccaacc7e" Name="Diagram1">
         <EntityTypeShape EntityType="RequisionModel.ESTADO" Width="1.5" PointX="3" PointY="6" />
         <EntityTypeShape EntityType="RequisionModel.REQUISICION" Width="1.5" PointX="5.25" PointY="1" />
-        <EntityTypeShape EntityType="RequisionModel.ROL" Width="1.5" PointX="0.75" PointY="1.75" />
+        <EntityTypeShape EntityType="RequisionModel.ROL" Width="1.5" PointX="0.75" PointY="1.875" />
         <EntityTypeShape EntityType="RequisionModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="5.75" />
         <EntityTypeShape EntityType="RequisionModel.USUARIO" Width="1.5" PointX="3" PointY="1.125" />
         <AssociationConnector Association="RequisionModel.FK_REQUISICION_ESTADO" />

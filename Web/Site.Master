@@ -6,7 +6,7 @@
 <head runat="server">
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title><%: Page.Title %> - UACA</title>
+	<title>Requisiciones - UACA</title>
 
 	<asp:PlaceHolder runat="server">
 		<%: Scripts.Render("~/bundles/modernizr") %>
@@ -68,7 +68,7 @@
 		<div class="navbar navbar-inverse navbar-fixed-top">
 			<div class="container">
 				<div class="navbar-header">
-					<a class="navbar-brand" runat="server" href="~/">Requisiciones</a>
+					<asp:Label Font-Size="Smaller" CssClass="navbar-brand" ID="lblHome" runat="server"></asp:Label>
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">

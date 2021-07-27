@@ -23,8 +23,7 @@ namespace Web.Model
         public int ID { get; set; }
         public string NOMBRE { get; set; }
         public string CODIGO { get; set; }
-        public Nullable<decimal> MONTO_MINIMO_APROBACION { get; set; }
-        public Nullable<decimal> MONTO_MAXIMO_APROBACION { get; set; }
+        public Nullable<decimal> LIMITE_APROBACION { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USUARIO> USUARIO { get; set; }

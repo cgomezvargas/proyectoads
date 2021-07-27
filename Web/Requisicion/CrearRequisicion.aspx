@@ -6,7 +6,7 @@
 		<tr>
 			<td>Monto</td>
 			<td>
-				<asp:TextBox ID="txtMonto" runat="server"></asp:TextBox>
+				<asp:TextBox ID="txtMonto" runat="server" onkeypress="return isFloatNumber(this,event);"></asp:TextBox>
 			</td>
 		</tr>
 		<tr>
@@ -16,7 +16,7 @@
 			</td>
 			<td>
 				<br />
-				<asp:TextBox ID="txtDescripcion" TextMode="MultiLine" runat="server" Width="275px" onkeypress="return isFloatNumber(this,event);"></asp:TextBox>
+				<asp:TextBox ID="txtDescripcion" TextMode="MultiLine" runat="server" Width="275px"></asp:TextBox>
 			</td>
 		</tr>
 		<tr>
