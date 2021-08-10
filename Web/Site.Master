@@ -65,7 +65,7 @@
 			</Scripts>
 		</asp:ScriptManager>
 
-		<div class="navbar navbar-inverse navbar-fixed-top">
+		<div style="padding:20px 0" class="navbar navbar-inverse navbar-fixed-top">
 			<div class="container">
 				<div class="navbar-header">
 					<asp:Label Font-Size="Smaller" CssClass="navbar-brand" ID="lblHome" runat="server"></asp:Label>
@@ -81,7 +81,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="container body-content">
+		<div style="margin:60px auto;" class="container body-content">
 			<asp:ContentPlaceHolder ID="MainContent" runat="server">
 			</asp:ContentPlaceHolder>
 			<hr />

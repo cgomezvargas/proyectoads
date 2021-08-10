@@ -3,7 +3,7 @@
 
 	<br /><br />
 
-	<table style="width:40%;">
+	<table style="width:40%; margin:10px auto;">
 		<tr>
 			<td><b>Creada por: </b></td>
 			<td>

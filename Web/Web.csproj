@@ -402,6 +402,7 @@
       <DependentUpon>RequisicionModel.edmx</DependentUpon>
       <LastGenOutput>RequisicionModel.cs</LastGenOutput>
     </Content>
+    <Content Include="public\Estilos\estilos.css" />
     <Content Include="Requisicion\CrearRequisicion.aspx" />
     <Content Include="Requisicion\Detalle.aspx" />
     <Content Include="Requisicion\ListaRequisiciones.aspx" />
