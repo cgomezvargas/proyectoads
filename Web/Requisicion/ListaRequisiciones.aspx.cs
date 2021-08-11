@@ -29,6 +29,9 @@ namespace Web.Requisicion
 					case "JEFE_APROBADOR":
 						requisionLista = db.REQUISICION.Where(q => q.USUARIO.ID == idUsuario).ToList();
 						break;
+					case "ADMIN":
+						requisionLista = db.REQUISICION.ToList();
+						break;
 					default:
 						requisionLista = db.REQUISICION.Where(q => q.USUARIO2.ID == idUsuario).ToList();
 						break;

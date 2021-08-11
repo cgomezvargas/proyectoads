@@ -16,34 +16,43 @@ namespace Web.Usuarios
 		{
 			if (!Page.IsPostBack)
 			{
-
 				int idUsuario = int.Parse(Request.Cookies["idUsuario"].Value);
 
-				List<USUARIO> usuariosList = db.USUARIO.Where(q => q.ID_JEFE_APROBADOR == idUsuario).ToList();
+				USUARIO usuario = db.USUARIO.Where(q => q.ID == idUsuario).FirstOrDefault();
+
+				btnCrearUsuario.Visible = usuario.ROL.CODIGO.Equals("ADMIN") || usuario.ROL.CODIGO.Equals("JEFE_APROBADOR");
+
+				List<USUARIO> usuariosList = null;
+
+				if (usuario.ROL.CODIGO.Equals("ADMIN"))
+					usuariosList = db.USUARIO.OrderBy(q => q.ROL.NOMBRE).ThenBy(q => q.NOMBRE).ToList();
+				else
+					usuariosList = db.USUARIO.Where(q => q.ID_JEFE_APROBADOR == idUsuario && q.ROL.CODIGO.StartsWith("APROBADOR_FINANCIERO")).OrderBy(q => q.ROL.NOMBRE).ThenBy(q => q.NOMBRE).ToList();
 			
 				List<ListaUsuariosDataSource> dataSource = new List<ListaUsuariosDataSource>();
 
-
 				foreach (USUARIO uss in usuariosList)
 				{
-					ListaUsuariosDataSource UsuariosData = new ListaUsuariosDataSource();
+					ListaUsuariosDataSource usuarioDataSource = new ListaUsuariosDataSource();
 
-					UsuariosData.NOMBRE = uss.NOMBRE;
-					UsuariosData.CORREO = uss.CORREO;
-					UsuariosData.USUARIO = uss.NOMBRE_USUARIO;
-					UsuariosData.ID_JEFE_APROBADOR = uss.ID_JEFE_APROBADOR;
-					dataSource.Add(UsuariosData);
+					usuarioDataSource.ID = uss.ID;
+					usuarioDataSource.NOMBRE = uss.NOMBRE;
+					usuarioDataSource.CORREO = uss.CORREO;
+					usuarioDataSource.USUARIO = uss.NOMBRE_USUARIO;
+					usuarioDataSource.ROL = uss.ROL.NOMBRE;
+					usuarioDataSource.ESTADO = uss.ESTADO ? "Activo" : "Inactivo";
+
+					if (uss.ROL.CODIGO.Equals("COMPRADOR") || uss.ROL.CODIGO.StartsWith("APROBADOR_FINANCIERO"))
+						usuarioDataSource.JEFE = db.USUARIO.Where(q => q.ID == uss.ID_JEFE_APROBADOR).FirstOrDefault().NOMBRE;
+					else
+						usuarioDataSource.JEFE = "No aplica";
+
+					dataSource.Add(usuarioDataSource);
 				}
 
-				GridView1.DataSource = dataSource;
-				GridView1.DataBind();
-
+				gvUsuarios.DataSource = dataSource;
+				gvUsuarios.DataBind();
 			}
-		}
-
-        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
 		}
 
 		class ListaUsuariosDataSource
@@ -52,9 +61,24 @@ namespace Web.Usuarios
 			public String NOMBRE { get; set; }
 			public string CORREO { get; set; }
 			public string USUARIO { get; set; }
-			public String CONTRASEÑA { get; set; }
-			public int? ID_JEFE_APROBADOR { get; set; }
-			
+			public string ROL { get; set; }
+			public string JEFE { get; set; }
+			public string ESTADO { get; set; }
+
+		}
+
+		protected void gvUsuarios_RowCommand(object sender, GridViewCommandEventArgs e)
+		{
+			string id = e.CommandArgument.ToString();
+
+			if (e.CommandName == "Editar")
+				Response.Redirect("CrearUsuario.aspx?id=" + id);
+
+		}
+
+		protected void btnCrearUsuario_Click(object sender, EventArgs e)
+		{
+			Response.Redirect("CrearUsuario.aspx");
 		}
 	}
 }

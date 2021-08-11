@@ -21,22 +21,39 @@ namespace Web.Login
 
 		protected void btnIngresar_Click(object sender, EventArgs e)
 		{
-			//TODO validar usuario, contrasenna
-			string usuario = txtUsuario.Text;
-			string contrasenna = Utilidades.Utilidades.CreateMD5(txtContrasenna.Text);
 
-			USUARIO usuarioDB = db.USUARIO.Where(q => q.NOMBRE_USUARIO.Equals(usuario) && q.CONTRASENNA.Equals(contrasenna)).FirstOrDefault();
-
-			if (usuarioDB != null)
+			if (string.IsNullOrEmpty(txtUsuario.Text))
 			{
-				Response.Cookies["idUsuario"].Value = usuarioDB.ID.ToString();
-
-				Response.Redirect("../Requisicion/ListaRequisiciones.aspx");
+				txtUsuario.Focus();
+				Response.Write("<script>alert('Por favor ingrese el nombre de usuario.')</script>");
 			}
-			else { 
-				//TODO enviar alerta que diga usuario o contrasenna incorrecta
+			else if (string.IsNullOrEmpty(txtContrasenna.Text))
+			{
+				txtContrasenna.Focus();
+				Response.Write("<script>alert('Por favor ingrese la contrasena.')</script>");
 			}
+			else
+			{
+				string usuario = txtUsuario.Text;
+				string contrasenna = Utilidades.Utilidades.CreateMD5(txtContrasenna.Text);
 
+				USUARIO usuarioDB = db.USUARIO.Where(q => q.NOMBRE_USUARIO.Equals(usuario) && q.CONTRASENNA.Equals(contrasenna)).FirstOrDefault();
+
+				if (usuarioDB != null)
+				{
+					if (usuarioDB.ESTADO)
+					{
+						Response.Cookies["idUsuario"].Value = usuarioDB.ID.ToString();
+
+						Response.Redirect("../Requisicion/ListaRequisiciones.aspx");
+					}
+					else
+						Response.Write("<script>alert('Usuario se encuentra inactivo.')</script>");
+
+				}
+				else
+					Response.Write("<script>alert('Usuario o contrasena incorrecta.')</script>");
+			}
 		}
 	}
 }

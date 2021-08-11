@@ -28,7 +28,6 @@ namespace Web.Model
         public virtual DbSet<ESTADO> ESTADO { get; set; }
         public virtual DbSet<REQUISICION> REQUISICION { get; set; }
         public virtual DbSet<ROL> ROL { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<USUARIO> USUARIO { get; set; }
     }
 }

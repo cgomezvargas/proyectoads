@@ -29,6 +29,10 @@ namespace Web
 						aUsuarios.Visible = true;
 						aRequisiciones.Visible = true;
 						break;
+					case "ADMIN":
+						aUsuarios.Visible = true;
+						aRequisiciones.Visible = true;
+						break;
 					default:
 						aRequisiciones.Visible = true;
 

@@ -20,33 +20,51 @@ namespace Web.Requisicion
 
 		protected void btnCrear_Click(object sender, EventArgs e)
 		{
-			int idUsuario = int.Parse(Request.Cookies["idUsuario"].Value);
+			decimal monto;
 
-			USUARIO userSession = db.USUARIO.Where(q => q.ID == idUsuario).FirstOrDefault();
+			if (string.IsNullOrEmpty(txtMonto.Text))
+			{
+				txtMonto.Focus();
+				Response.Write("<script>alert('El monto es requerido.')</script>");
+			}
+			else if (!decimal.TryParse(txtMonto.Text, out monto))
+			{
+				Response.Write("<script>alert('El monto de la requisicion es invalido.')</script>");
+			}
+			else if (string.IsNullOrEmpty(txtDescripcion.Text))
+			{
+				txtDescripcion.Focus();
+				Response.Write("<script>alert('La descripcion es requerida.')</script>");
+			}
+			else
+			{
+				int idUsuario = int.Parse(Request.Cookies["idUsuario"].Value);
 
-			REQUISICION nuevaRequision = new REQUISICION();
-			nuevaRequision.MONTO = decimal.Parse(txtMonto.Text);
-			nuevaRequision.DESCRIPCION = txtDescripcion.Text;
-			nuevaRequision.FECHA_CREACION = DateTime.Now;
-			nuevaRequision.USUARIO1 = userSession;
-			nuevaRequision.USUARIO = userSession.USUARIO2;
-			nuevaRequision.ESTADO = db.ESTADO.Where(q => q.CODIGO.Equals("REQUISION_CREADA")).FirstOrDefault();
+				USUARIO userSession = db.USUARIO.Where(q => q.ID == idUsuario).FirstOrDefault();
 
-			#region Determina Jefe Financiero basado en monto de requisicion
-			decimal monto = decimal.Parse(txtMonto.Text);
-			ROL rolFinanciero = db.ROL.Where(q => q.CODIGO.StartsWith("APROBADOR_FINANCIERO") && q.LIMITE_APROBACION >= monto).OrderBy(q => q.LIMITE_APROBACION).Take(1).FirstOrDefault();
+				REQUISICION nuevaRequision = new REQUISICION();
+				nuevaRequision.MONTO = monto;
+				nuevaRequision.DESCRIPCION = txtDescripcion.Text;
+				nuevaRequision.FECHA_CREACION = DateTime.Now;
+				nuevaRequision.USUARIO1 = userSession;
+				nuevaRequision.USUARIO = userSession.USUARIO2;
+				nuevaRequision.ESTADO = db.ESTADO.Where(q => q.CODIGO.Equals("REQUISION_CREADA")).FirstOrDefault();
 
-			USUARIO uusuarioFinanciero = db.USUARIO.Where(q => q.ID_ROL == rolFinanciero.ID && q.ID_JEFE_APROBADOR == userSession.USUARIO2.ID).FirstOrDefault();
-			nuevaRequision.USUARIO2 = uusuarioFinanciero != null ? uusuarioFinanciero : userSession.USUARIO2;
-			#endregion
+				#region Determina Jefe Financiero basado en monto de requisicion
+				ROL rolFinanciero = db.ROL.Where(q => q.CODIGO.StartsWith("APROBADOR_FINANCIERO") && q.LIMITE_APROBACION >= monto).OrderBy(q => q.LIMITE_APROBACION).Take(1).FirstOrDefault();
 
-			db.REQUISICION.Add(nuevaRequision);
-			db.SaveChanges();
+				USUARIO uusuarioFinanciero = db.USUARIO.Where(q => q.ID_ROL == rolFinanciero.ID && q.ID_JEFE_APROBADOR == userSession.USUARIO2.ID).FirstOrDefault();
+				nuevaRequision.USUARIO2 = uusuarioFinanciero != null ? uusuarioFinanciero : userSession.USUARIO2;
+				#endregion
 
-			Notificaciones.EnviarNotificacion(nuevaRequision.ID);
+				db.REQUISICION.Add(nuevaRequision);
+				db.SaveChanges();
 
-			Response.Write("<script>alert('Requisición creada con éxito. No: " + nuevaRequision.ID + "')</script>");
-			Response.Redirect("ListaRequisiciones.aspx");
+				Notificaciones.EnviarNotificacion(nuevaRequision.ID);
+
+				Response.Write("<script>alert('Requisición creada con éxito. No: " + nuevaRequision.ID + "')</script>");
+				Response.Redirect("ListaRequisiciones.aspx");
+			}
 		}
 	}
 }

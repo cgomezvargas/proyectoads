@@ -30,6 +30,7 @@ namespace Web.Model
         public string NOMBRE_USUARIO { get; set; }
         public string CONTRASENNA { get; set; }
         public Nullable<int> ID_JEFE_APROBADOR { get; set; }
+        public bool ESTADO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<REQUISICION> REQUISICION { get; set; }
